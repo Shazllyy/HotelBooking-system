@@ -1,0 +1,62 @@
+﻿@model IEnumerable<HotelBookingClient.Models.branch>
+
+@{
+    ViewData["Title"] = "Branches List";
+}
+<partial name="_header">
+<h1>BRANCHES LIST</h1>
+
+<p>
+    <a class="btn m-2 btn-primary" asp-action="Create">Create New</a>
+        <a onclick="window.print()" class="btn m-2 btn-success">Print</a>
+
+</p>
+<table class="table table-striped text-center">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.branch_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.branch_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.branch_city)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.branch_country)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.branch_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.branch_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.branch_city)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.branch_country)
+            </td>
+            <td>
+                @Html.ActionLink("Edit","Edit",new branch(){  branch_id=item.branch_id,
+                    branch_city=item.branch_city,
+                    branch_country=item.branch_country,
+                    branch_name=item.branch_name                    
+                },new{@class="btn m-2 btn-success"}) |
+                @Html.ActionLink("Delete", "Delete", new branch(){  branch_id=item.branch_id,
+                    branch_city=item.branch_city,
+                    branch_country=item.branch_country,
+                    branch_name=item.branch_name                    
+                },new{@class="btn m-2 btn-danger"})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

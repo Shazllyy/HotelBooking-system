@@ -1,0 +1,121 @@
+﻿@model HotelBookingClient.Models.ReserveRoomData;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Book room";
+}
+@section  Styles{
+<link href="~/css/Book.css" rel="stylesheet" type="text/css" asp-append-version="true"/>
+}
+<main class="m-5">
+    <div class="py-5 text-center">
+        <h2>Checkout form</h2>
+        <a asp-action="SearchView" asp-controller="Home" class="btn btn-primary">Back to search</a>
+    </div>
+    <div class="row g-5 m-auto">
+        
+        <div class="col-md-7 col-lg-8">
+           
+            <form  asp-controller="Room" asp-action="ConfirmReserve">
+
+                <div class="col-md-5 col-lg-4 order-md-last">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-primary">Invoice</span>                
+                </h4>
+                <ul class="list-group mb-3">
+                
+                    <li class="list-group-item d-flex justify-content-between lh-sm">
+                        <div>
+                            <h6 class="my-0" style="text-transform:capitalize">@Model.room.room_type</h6>
+                            <small class="text-muted">
+                                @{
+                                    int dayes = (Model.resident_Room.end_book_date - Model.resident_Room.start_book_date).Days;
+                                    if(dayes==0)
+                                        dayes = 1;
+                                }
+                            
+                              @dayes  Day(s)  x @Model.room.room_price $ / day   </small>
+                        </div>
+                        <span class="h5 text-danger">Total <input readonly asp-for="resident_Room.room_total_price"  class="col-sm-6" value="@( (dayes * Model.room.room_price))"> $</span>
+                    </li>                   
+                </ul>           
+                  </div>
+
+                 <h4 class="mb-3">Room data</h4>
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <label class="form-label">Room ID</label>
+                        <input  class="form-control" asp-for="room.room_id" readonly style="text-transform:capitalize" >                                               
+                    </div>
+
+                     <div class="col-sm-6">
+                        <label class="form-label">Room Number</label>
+                        <input  class="form-control" asp-for="room.room_number" readonly style="text-transform:capitalize"  >                                               
+                    </div>
+                    
+                    <div class="col-sm-6">
+                        <label class="form-label">Room type</label>
+                        <input  class="form-control" asp-for="room.room_type" readonly style="text-transform:capitalize"  >                                               
+                    </div>
+                    
+                    <div class="col-sm-6">
+                        <label  class="form-label">Room price $ / Day</label>
+                        <input   class="form-control" readonly asp-for="room.room_price" >                        
+                    </div>
+
+                     <div class="col-sm-6">
+                        <label  class="form-label">Branch id</label>
+                        <input  class="form-control"  readonly asp-for="room.branch_id"  >                        
+                    </div>
+
+                     <div class="col-sm-6">
+                        <label  class="form-label">Room capacity (people)</label>
+                        <input  class="form-control" readonly asp-for="room.room_capacity" >                        
+                    </div>
+
+                    
+                                        
+                    <h4 class="mb-3">Reservation data</h4>
+                    
+                     <div class="col-sm-6">
+                        <label  class="form-label">Start date</label>
+                        <input  class="form-control" type="text" readonly asp-for="resident_Room.start_book_date"  >                        
+                    </div>
+
+                     <div class="col-sm-6">
+                        <label  class="form-label">End date</label>
+                        <input  class="form-control" type="text" readonly asp-for="resident_Room.end_book_date"  >                        
+                    </div>
+
+                    
+                    <div class="col-sm-6">
+                        <label  class="form-label">National ID</label>
+                        <input asp-for="resident.nationalID" class="form-control"   required placeholder="27635243529876">                       
+                    </div>
+
+                     <div class="col-sm-6">
+                        <label  class="form-label">Resident name</label>
+                        <input asp-for="resident.resident_name" class="form-control"  required placeholder="Abdullah">                         
+                    </div>
+
+                   
+                    <div class="col-sm-6">
+                        <label  class="form-label">Resident count</label>
+                        <select asp-for="room.room_residents_count" class="form-select"  required>
+                            @for(int i =1; i <= Model.room.room_capacity; i++)
+                            {
+                                <option value="@i">@i</option>
+                            }                            
+                        </select>                       
+                    </div>                                  
+                </div>
+                <input class="w-100 m-2 btn btn-danger btn-lg" type="submit" value="Continue to checkout">
+            </form>
+        </div>
+    </div>
+
+   
+
+    
+</main>

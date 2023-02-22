@@ -1,0 +1,106 @@
+﻿@model ReserveRoomData
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    
+    ViewData["Title"] = "Confirm reserve ";
+}
+
+
+<div class="card  col-sm-5" style="margin-left:27%;margin-top:40px;" >
+    <a asp-action="SearchView" class="btn btn-outline-primary" asp-controller="Home">Back to search</a>
+     <div class="text-center" style="margin-top: 90px;">
+        <button style="font-size:20px" class="btn m-3  btn-success" onclick="
+        window.print();
+        ">Print</button>
+      </div>    
+    <h1 class="m-auto">Done <i class="fa-solid fa-circle-check"></i></h1> 
+    <h2 class="m-auto">Reserve confirmed.</h2>
+  <div class="card-body mx-4">
+    <div class=" container">
+      <p class="my-5 mx-5" style="font-size: 30px;">Thank you @Model.resident.resident_name for trusting us</p>
+      <div class="row">
+        <ul class="list-unstyled">
+          <li class="text-black">@Model.resident.resident_name</li>
+          <li class="text-muted mt-1"><span class="text-black">Invoice date</span></li>
+          <li class="text-black mt-1">@DateTime.Now</li>
+        </ul>
+        <hr>
+        <div class="col-xl-10">
+          <p>Start date</p>
+        </div>
+        <div class="col-xl-2">
+          <p class="float-end">@Model.resident_Room.start_book_date
+          </p>
+        </div>
+        <hr>
+
+
+        <div class="col-xl-10">
+          <p>End date </p>
+        </div>
+        <div class="col-xl-2">
+          <p class="float-end">@Model.resident_Room.end_book_date
+          </p>
+        </div>
+        <hr>
+
+        
+
+
+        <div class="col-xl-10">
+          <p>Room number </p>
+        </div>
+        <div class="col-xl-2">
+          <p class="float-end">@Model.room.room_number
+          </p>
+        </div>
+        <hr>
+
+
+         <div class="col-xl-10">
+          <p>Room type </p>
+        </div>
+        <div class="col-xl-2">
+          <p class="float-end">@Model.room.room_type
+          </p>
+        </div>
+        <hr>
+
+
+        <div class="col-xl-10">
+          <p>Residents count</p>
+        </div>
+        <div class="col-xl-2">
+          <p class="float-end">@Model.room.room_residents_count
+          </p>
+        </div>
+        <hr>
+
+
+        
+          <hr style="border: 2px solid black;">
+        <div class="col-xl-10">
+          <p>Total amount to pay @if (ViewBag.haveDiscount) {<span class="text-success">after discount</span> } </p>
+        </div>        
+        <div class="col-xl-2">
+          <p class="float-end"> @Model.resident_Room.room_total_price $
+          </p>
+        </div>
+
+        
+        <hr>
+      </div>    
+      <div class="row text-black">
+      
+              
+      </div>
+      <div class="text-center" style="margin-top: 90px;">
+        <button style="font-size:20px" class="btn m-3  btn-success" onclick="Window.print()">Print</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+

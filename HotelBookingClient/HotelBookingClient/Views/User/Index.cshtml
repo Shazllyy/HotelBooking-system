@@ -1,0 +1,60 @@
+﻿@model IEnumerable<HotelBookingClient.Models.user>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<partial name="_header">
+<h1>USERS LIST</h1>
+
+<p>
+    <a class="btn m-2 btn-primary" asp-action="Create">Create New</a>
+       
+</p>
+
+<table class="table table-striped text-center">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.user_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userPassword)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.role)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.user_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userPassword)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.role)
+            </td>
+            <td>                
+                @Html.ActionLink("Delete", "Delete", new user(){ 
+                    userName=item.userName,
+                    userPassword=item.userPassword,
+                    role=item.role,
+                    user_id=item.user_id
+                }
+                ,new{@class="btn m-2 btn-danger"})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

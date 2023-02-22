@@ -1,0 +1,139 @@
+﻿@model IEnumerable<HotelBookingClient.Models.resident_room>
+
+@{
+    ViewData["Title"] = "Reservations";
+}
+<partial name="_Header">
+<h1>RESERVATIONS LIST</h1>
+
+<p>
+    <a onclick="window.print()" class="btn m-2 btn-success">Print</a>
+</p>
+<table class="table table-striped text-center">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.reservation_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.resident_nationalID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.room_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.start_book_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.end_book_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.checkout_date)
+                
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.room_total_price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.canceled)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.is_active)
+            </th>
+            <th>Actiones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.reservation_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.resident_nationalID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.room_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.start_book_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.end_book_date)
+            </td>
+            <td>                       
+                 @if (item.checkout_date == DateTime.MinValue)
+                   {                            
+                    <span>-</span>
+                    }
+                    else{                           
+                     @Html.DisplayFor(modelItem => item.checkout_date)
+                   }                                                                           
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.room_total_price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.canceled)
+            </td>
+           <td>
+                @Html.DisplayFor(modelItem => item.is_active)
+            </td>
+            <td>               
+                @Html.ActionLink("Details", "Details", new resident_room(){
+                    reservation_ID = item.reservation_ID                   
+                    },new {@class="btn m-2 btn-info"})|
+                @Html.ActionLink("Delete", "Delete", new resident_room() {
+                     reservation_ID = item.reservation_ID,
+                    resident_nationalID = item.resident_nationalID,
+                    room_id = item.room_id,
+                    start_book_date = item.start_book_date,
+                    end_book_date = item.end_book_date,
+                    checkout_date = item.checkout_date,
+                    room_total_price = item.room_total_price,
+                    canceled = item.canceled,
+                    is_active = item.is_active
+                },new {@class="btn m-2 btn-danger"})|
+
+                        @if (item.is_active == true) { 
+                      @Html.ActionLink("Cancel", "Cancel", new resident_room() {
+                     reservation_ID = item.reservation_ID,
+                    resident_nationalID = item.resident_nationalID,
+                    room_id = item.room_id,
+                    start_book_date = item.start_book_date,
+                    end_book_date = item.end_book_date,
+                    checkout_date = item.checkout_date,
+                    room_total_price = item.room_total_price,
+                    canceled = item.canceled,
+                    is_active = item.is_active
+                },new {@class="btn m-2 btn-danger"}) 
+                
+                 @Html.ActionLink("Check Out", "CheckOut", new resident_room() {
+                     reservation_ID = item.reservation_ID,
+                    resident_nationalID = item.resident_nationalID,
+                    room_id = item.room_id,
+                    start_book_date = item.start_book_date,
+                    end_book_date = item.end_book_date,
+                    checkout_date = item.checkout_date,
+                    room_total_price = item.room_total_price,
+                    canceled = item.canceled,
+                    is_active = item.is_active
+                },new {@class="btn m-2 btn-danger"})
+                        }
+                        else
+                        {
+                            <button class="btn m-2 btn-danger" disabled>Cancel</button> <span>|</span>
+                            <button class="btn m-2 btn-danger" disabled>Checkout</button>
+                        }
+
+
+
+
+                
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

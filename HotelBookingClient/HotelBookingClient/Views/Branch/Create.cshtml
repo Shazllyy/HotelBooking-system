@@ -1,0 +1,47 @@
+﻿@model HotelBookingClient.Models.branch
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<partial name="_Header">
+<h1>CREATE BRANCH</h1>
+
+<div class="row centerOut">
+    <div class="col-md-4 centerIn">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" hidden>
+                <label asp-for="branch_id" class="control-label"></label>
+                <input asp-for="branch_id" value="0" class="form-control" />
+                <span asp-validation-for="branch_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="branch_name" class="control-label"></label>
+                <input asp-for="branch_name" class="form-control" />
+                <span asp-validation-for="branch_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="branch_city" class="control-label"></label>
+                <input asp-for="branch_city" class="form-control" />
+                <span asp-validation-for="branch_city" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="branch_country" class="control-label"></label>
+                <input asp-for="branch_country" class="form-control" />
+                <span asp-validation-for="branch_country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn m-2 btn-primary" />
+                 <input type="reset" value="Reset" class="btn m-2 btn-danger" />
+            </div>
+        </form>
+        
+    </div>
+    <div>
+    <a asp-action="Index" class="btn m-2 btn-primary">Back to List</a>
+</div>
+    
+</div>
+
+

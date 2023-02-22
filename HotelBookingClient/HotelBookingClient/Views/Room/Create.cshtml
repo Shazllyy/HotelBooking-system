@@ -1,0 +1,92 @@
+﻿@model HotelBookingClient.Models.room
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<partial name="_Header">
+<h1>CREATE ROOM</h1>
+
+
+<div class="row centerOut">
+    <div class="col-md-4 centerIn">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" hidden>
+                <label asp-for="room_id" class="control-label"></label>
+                <input asp-for="room_id" value="0" class="form-control" />
+                <span asp-validation-for="room_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                 <label asp-for="room_capacity" class="control-label"></label>
+                <select asp-for="room_capacity" class="form-control">
+                    <option selected disabled></option>
+                    <optgroup label="single">
+                         <option value="1">1</option>
+                    </optgroup>
+                   <optgroup label ="double">
+                        <option value="2">2</option>
+                   </optgroup>
+                   <optgroup label="suite">
+                        <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>                       
+                   </optgroup>                   
+                </select>                                
+                <span asp-validation-for="room_capacity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="room_status" class="control-label"></label>
+                <input asp-for="room_status" value="available" readonly class="form-control" />
+                <span asp-validation-for="room_status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="room_type" class="control-label"></label>               
+                <select asp-for="room_type" class="form-control">
+                    <option selected disabled></option>
+                    <option value="single">single</option>
+                    <option value="double">double</option>
+                    <option value="suite">suite</option>
+                </select>                
+                <span asp-validation-for="room_type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="room_price" class="control-label">Room price / Day</label>
+                <input asp-for="room_price" class="form-control" />
+                <span asp-validation-for="room_price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="room_number" class="control-label"></label>
+                <input asp-for="room_number" class="form-control" />
+                <span asp-validation-for="room_number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="branch_id" class="control-label">Branch</label>
+                 <select class="form-control" asp-for="branch_id"
+                    asp-items="@(new SelectList(ViewBag.branches,nameof(branch.branch_id),
+					nameof(branch.branch_name)))">											
+					</select>    
+                <span asp-validation-for="branch_id" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="room_residents_count" class="control-label"></label>
+                <input asp-for="room_residents_count" value="0" class="form-control" />
+                <span asp-validation-for="room_residents_count" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn m-2 btn-primary" />
+                 <input type="reset" value="Reset" class="btn m-2 btn-danger" />
+            </div>
+        </form>
+        
+    </div>
+    <div>
+    <a asp-action="Index" class="btn m-2 btn-primary">Back to List</a>
+</div>
+
+</div>
+
+

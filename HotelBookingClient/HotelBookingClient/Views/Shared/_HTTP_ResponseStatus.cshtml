@@ -1,0 +1,28 @@
+﻿@model HttpResponseMessage
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Request Error page";
+}
+@section Styles{
+<link href="https://fonts.googleapis.com/css?family=Montserrat:500" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Titillium+Web:700,900" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="~/css/Error.css" asp-append-version="true" />
+}
+<div id="notfound">
+		<div class="notfound">
+			<div class="notfound-404">
+				<h1>@((int)Model.StatusCode)</h1>
+			</div>
+            @if (Model.Content != null)
+				{  
+			<h2>Oops! Invalid request , here's the response message :<span class="text-danger">  @Model.Content.ReadAsStringAsync().Result</span> </h2>            
+				}   				
+			<p>Sorry but the request made is invalid</p>
+            <h1>@Model.StatusCode</h1>
+			<a asp-action="SearchView" asp-controller="Home">Go To Homepage</a>
+		</div>
+	</div>
+
+

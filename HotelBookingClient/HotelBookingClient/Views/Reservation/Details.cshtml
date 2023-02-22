@@ -1,0 +1,141 @@
+﻿@model HotelBookingClient.Models.ReservationData;
+
+@{
+    ViewData["Title"] = "Details";
+}
+<partial name="_Header">
+<h1>RESERVATION DETAILS</h1>
+
+<div class="centerOut">
+   
+    <dl class="row centerIn">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.resident_Room.reservation_ID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.resident_Room.reservation_ID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.resident.resident_name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.resident.resident_name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.room.room_id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.room.room_id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.resident_Room.start_book_date)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.resident_Room.start_book_date)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.resident_Room.end_book_date)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.resident_Room.end_book_date)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.resident_Room.checkout_date)
+        </dt>
+        <dd class = "col-sm-10">
+
+             @if(Model.resident_Room.checkout_date == DateTime.MinValue)
+                   {                            
+                    <span>-</span>
+                    }
+                    else{                           
+                    @Html.DisplayFor(model => model.resident_Room.checkout_date)
+
+                   }    
+         </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.resident.nationalID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.resident.nationalID)
+        </dd>
+        <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.room.room_type)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.room.room_type)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.room.room_status)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.room.room_status)
+        </dd>
+         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.room.room_capacity)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.room.room_capacity)
+        </dd>
+
+          <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.room.room_price)
+        </dt>
+         <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.room.room_price)
+        </dd>       
+
+         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.room.room_residents_count)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.room.room_residents_count)
+        </dd>
+        
+          <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.branch.branch_name)
+        </dt>
+         <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.branch.branch_name)
+        </dd>
+
+
+          <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.branch.branch_id)
+        </dt>
+         <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.branch.branch_id)
+        </dd>
+
+
+          <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.branch.branch_city)
+        </dt>
+         <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.branch.branch_city)
+        </dd>
+
+
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.branch.branch_country)
+        </dt>
+         <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.branch.branch_country)
+        </dd>
+
+
+         <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.branch.branch_country)
+        </dt>
+         <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.branch.branch_country)
+        </dd>                                                      
+        
+    </dl>
+
+
+    <div>
+    <a class="btn-primary m-2 btn" asp-action="Index">Back to List</a>
+</div>
+
+</div>

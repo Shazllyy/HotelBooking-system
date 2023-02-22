@@ -1,0 +1,70 @@
+﻿@model HotelBookingClient.Models.searchData
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Search rooms";
+}
+@section Styles{
+	<link href="~/css/searchPage.css" rel="stylesheet" type="text/css" asp-append-version="true">
+
+}
+	<partial name="_header">
+<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-7 col-md-push-5">
+						<div class="booking-cta">
+							<h1>Make a reservation</h1>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi facere, soluta magnam consectetur molestias itaque
+								ad sint fugit architecto incidunt iste culpa perspiciatis possimus voluptates aliquid consequuntur cumque quasi.
+								Perspiciatis.
+							</p>
+						</div>
+					</div>
+					<div class="col-md-4 col-md-pull-7">
+						<div class="booking-form">
+							<form asp-action="SearchRooms">
+
+                                <div class="row">
+                                    <div class="form-group">
+
+									<span class="form-label">Choose  branch</span>                                                                     									 
+									   <select class="form-control" id="branches" asp-for="branch_id"
+									   asp-items="@(new SelectList(ViewBag.branches,nameof(branch.branch_id),
+										nameof(branch.branch_name)))">											
+									</select>                                                                          									 																			 									                                                                      								
+								</div>
+                                    
+								</div>
+								                                
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<span class="form-label">Check In</span>
+											<input asp-for="startDate" class="form-control" type="date" required>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<span class="form-label">Check out</span>
+											<input asp-for="endDate" class="form-control" type="date" required>
+										</div>
+									</div>
+								</div>
+							
+								<div class="form-btn">
+									<button class="submit-btn">Check availability</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+@section  Scripts{
+
+}
+    

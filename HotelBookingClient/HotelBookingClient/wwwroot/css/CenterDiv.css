@@ -1,0 +1,19 @@
+﻿.centerOut {
+    margin: auto;
+    width: 80%;
+    border: 2px solid black;
+    padding: 10px;
+    border-top-left-radius: 37px 140px;
+    border-top-right-radius: 23px 130px;
+    border-bottom-left-radius: 110px 19px;
+    border-bottom-right-radius: 120px 24px;
+}
+
+.centerIn {
+    margin: auto;
+    width: 80%;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius:5px;
+}
+

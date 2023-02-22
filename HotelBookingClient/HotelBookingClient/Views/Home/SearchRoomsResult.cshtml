@@ -1,0 +1,81 @@
+﻿@model IEnumerable<HotelBookingClient.Models.room>
+
+@{
+    ViewData["Title"] = "Search result";
+   
+}
+@section Styles{
+<link href="~/css/RoomsList.css" rel="stylesheet" type="text/css" asp-append-version="true">
+}
+<h1>SEARCH RESULT</h1>
+
+<p>
+    <a class="css-button-retro--sky m-2" asp-action="SearchView">Back to search</a>
+</p>
+
+@*<input type="text" id="searchKeyword" class="form-control" placeholder="Search with any thing in the table (e.g: Price, Type, etc. ) ">
+*@
+<table class="table table-bordered text-center" id="RoomsTable">
+    <thead>
+        <tr>          
+            <th>
+                @Html.DisplayNameFor(model => model.room_capacity) (People)
+            </th>          
+            <th>
+                @Html.DisplayNameFor(model => model.room_type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.room_price) ($)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.room_number)
+            </th>                      
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>           
+            <td>
+                @Html.DisplayFor(modelItem => item.room_capacity) 
+            </td>           
+            <td>
+                @Html.DisplayFor(modelItem => item.room_type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.room_price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.room_number)
+            </td>           
+            <td class="css-button-retro--green">
+                @Html.ActionLink(linkText:"Book", actionName:"CheckOut",controllerName:"Room",routeValues:new {  id=item.room_id,
+                    startdate = TempData["startdate"],
+                    enddate = TempData["enddate"]})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+@section Scripts{
+    
+   <script>
+      
+//$(document).ready(function(){
+
+// $("#searchKeyword").on("change", function () {
+//     var value = $(this).val().toLowerCase();
+//     $("#RoomsTable tbody tr").filter(function () {
+//        $(this).toggle($(this.children[1]).text().toLowerCase().indexOf(value) > -1)              
+//     });
+//  });
+
+
+//});
+  
+
+</script>
+}
+

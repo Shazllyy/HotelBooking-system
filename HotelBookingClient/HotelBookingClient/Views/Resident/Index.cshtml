@@ -1,0 +1,43 @@
+﻿@model IEnumerable<HotelBookingClient.Models.resident>
+
+@{
+    ViewData["Title"] = "Resident List";
+}
+<partial name="_Header">
+<h1>RESIDNTS LIST</h1>
+
+<p>
+    <a class="btn m-2 btn-primary" asp-action="Create">Create New</a>
+    <a onclick="window.print()" class="btn m-2 btn-success">Print</a>
+</p>
+<table class="table table-striped text-center">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nationalID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.resident_name)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nationalID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.resident_name)
+            </td>
+            <td>              
+                @Html.ActionLink("Delete", "Delete", new resident(){
+                    nationalID=item.nationalID,
+                    resident_name=item.resident_name
+                },new{@class="btn m-2 btn-danger"})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
